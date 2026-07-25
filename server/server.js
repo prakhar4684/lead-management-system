@@ -9,9 +9,14 @@ const cors=require('cors');
 env.config();
 
 
+const cors = require("cors");
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [
+      "http://localhost:5173",
+      "https://lead-management-system-chi-umber.vercel.app",
+    ],
     credentials: true,
   })
 );
