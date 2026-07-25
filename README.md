@@ -204,7 +204,7 @@ GitHub:
 https://github.com/prakhar4684
 
 LinkedIn:
-https://linkedin.com/in/your-linkedin
+www.linkedin.com/in/prakhar-shukla-746360319
 
 ---
 
