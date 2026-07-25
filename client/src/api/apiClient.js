@@ -1,14 +1,14 @@
 import axios from "axios";
 
-const apiclient = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/api`,
+const apiClient = axios.create({
+  baseURL: "https://lead-management-system-va9u.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 // Request Interceptor
-apiclient.interceptors.request.use((config) => {
+apiClient.interceptors.request.use((config) => {
   console.log("Request Data:", config.data);
   console.log("Type:", typeof config.data);
 
@@ -22,9 +22,8 @@ apiclient.interceptors.request.use((config) => {
 });
 
 // Response Interceptor
-apiclient.interceptors.response.use(
+apiClient.interceptors.response.use(
   (response) => response,
-
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem("token");
@@ -34,4 +33,4 @@ apiclient.interceptors.response.use(
   }
 );
 
-export default apiclient;
+export default apiClient;
