@@ -1,21 +1,13 @@
 import axios from "axios";
 
-
 const apiclient = axios.create({
-
-    baseURL: `${import.meta.env.VITE_API_URL}/api`,
-
-    headers: {
-        "Content-Type": "application/json"
-    }
-
+  baseURL: `${import.meta.env.VITE_API_URL}/api`,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-
-
-
-// Request interceptor
-
+// Request Interceptor
 apiclient.interceptors.request.use((config) => {
   console.log("Request Data:", config.data);
   console.log("Type:", typeof config.data);
@@ -29,50 +21,17 @@ apiclient.interceptors.request.use((config) => {
   return config;
 });
 
-
-
-
-
-// Response interceptor
-
-
+// Response Interceptor
 apiclient.interceptors.response.use(
+  (response) => response,
 
-
-    (response)=>{
-
-
-        return response;
-
-
-    },
-
-
-    (error)=>{
-
-
-        if(
-            error.response &&
-            error.response.status === 401
-        ){
-
-
-            localStorage.removeItem("token");
-
-
-            // later redirect login
-
-        }
-
-
-        return Promise.reject(error);
-
-
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
     }
 
+    return Promise.reject(error);
+  }
 );
 
-
-
-
-export default apiclient
+export default apiclient;
