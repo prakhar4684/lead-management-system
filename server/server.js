@@ -16,6 +16,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://lead-management-system-chi-umber.vercel.app",
+      "https://lead-management-system-git-main-prakhar-team.vercel.app",
     ],
     credentials: true,
   })
